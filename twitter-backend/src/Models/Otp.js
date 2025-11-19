@@ -1,7 +1,13 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 
-const verifiedMailSchema = new mongoose.Schema({
+const otpSchema = new mongoose.Schema({
+  otp: {
+    type: String,
+    minlength: 6,
+    maxlength: 6,
+    required: true,
+  },
   mail: {
     type: String,
     required: true,
@@ -12,10 +18,15 @@ const verifiedMailSchema = new mongoose.Schema({
       }
     },
   },
+  createAt: {
+    type: Date,
+    default: Date.now(),
+    expires: 120,
+  }
 });
 
-const VerifiedMail = mongoose.model("VerifiedMail", verifiedMailSchema);
+const OTP = mongoose.model("OTP", otpSchema);
 
 module.exports = {
-  VerifiedMail,
+  OTP,
 };
