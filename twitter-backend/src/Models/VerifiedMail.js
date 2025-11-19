@@ -13,11 +13,13 @@ const verifiedMailSchema = new mongoose.Schema({
         }
     }, 
     isVerfied: {
-        default: false,
+        type: Boolean,
         enum: {
             value: [true, false],
             message: "`{VALUE}` provided for key `{PATH} is invalid`"
-        }
+        },
+        required: true,
+        default: false,
     },
     otp: {
         type: String,
