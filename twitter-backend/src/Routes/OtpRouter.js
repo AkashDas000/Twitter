@@ -101,7 +101,7 @@ router.post("/otp/verify-otp", async (req, res) => {
     if(!foundObject){
       throw new Error("Invalid email/otp")
     }
-
+ 
     await VerifiedMail.create({mail})
     res.status(201).json({msg: "User Verified"})
   } catch (error) {
