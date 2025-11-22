@@ -23,6 +23,7 @@ const userSchema = new mongoose.Schema({
         trim: true,
         required: true,
         unique: true,
+        immutable: true
     },
     mail: {
         type: String,
@@ -35,6 +36,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
         trim: true,
+        immutable: true,
     },
     password: {
         type: String,
@@ -49,7 +51,8 @@ const userSchema = new mongoose.Schema({
             if(!isDateValid){
                 throw new Error("Invalid Date, use YYYY/MM/DD or YYYY-MM-DD")
             }
-        }
+        },
+        immutable: true
     },
     post: [],
     followers: [],
