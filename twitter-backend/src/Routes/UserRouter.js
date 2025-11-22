@@ -10,7 +10,7 @@ router.post("/signup", async (req, res) => {
     try {
         const {firstName, lastName, username, mail, password, dateofBirth} = req.body
 
-        const foundUser = User.findOne({
+        const foundUser = await User.findOne({
             $or: [
                 {username},
                 {mail}

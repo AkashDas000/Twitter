@@ -40,11 +40,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    dataofBirth: {
+    dateofBirth: {
         type: String,
         required: true,
         trim: true,
-        validate: () => {
+        validate: (val) => {
             const isDateValid  = validator.isDate(val)
             if(!isDateValid){
                 throw new Error("Invalid Date, use YYYY/MM/DD or YYYY-MM-DD")

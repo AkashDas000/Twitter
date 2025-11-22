@@ -16,8 +16,15 @@ const transporter = nodemailer.createTransport({
 router.post("/otp/send-otp", otpLimiter, async (req, res) => {
   try {
     const { mail } = req.body;
+
+    const foundMail = await VerifiedMail.findOne({mail})
+    if(foundMail){
+      throw new Error("User email already exists, try with another email....")
+    }
+
+
     const otp = String(Math.floor(Math.random() * 1000000)).padEnd(6, 0);
-    const vm = await OTP.create({ mail, otp });
+    await OTP.create({ mail, otp });
 
     await transporter.sendMail({
       from: ' "Akash" dasakash.9355@gmail.com',
