@@ -11,7 +11,7 @@ router.patch("/profile/edit", isLoggedIn, async (req, res) => {
         const updateProfile = await User.findByIdAndUpdate(userId, {firstName, lastName, bio, profilePicture}, {new: true}).select("firstName lastName bio profilePicture dateOfBirth username post followers following")
         res.status(200).json({msg: "done", data: updateProfile})
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(400).json({error: error.message}) 
     }
 })
 
