@@ -6,7 +6,7 @@ const {otpRouter} = require("./src/Routes/OtpRouter");
 const { userRouter } = require("./src/Routes/UserRouter");
 const { profileRouter } = require("./src/Routes/ProfileRouter");
 const cp = require("cookie-parser");
-const postRouter = require("./src/Routes/postRouter");
+const {postRouter} = require("./src/Routes/postRouter");
 
 mongoose.connect(process.env.MONGODB_URL).then(() => {
     console.log("DB connected");
