@@ -18,6 +18,16 @@ router.post("/posts", isLoggedIn, async(req, res) => {
         
     } 
 })
+
+router.get("/posts", isLoggedIn, async( req, res) => {
+    try {
+        const loggedInUserId = req.user._id;
+        const foundPost = await Post.find({author: loggedInUserId})
+        res.status(200).json({msg: "done", data: foundPost})
+    } catch (error) {
+        res.status(401).json({error: error.message})
+    }
+})
  
 module.exports = {
     postRouter: router,
