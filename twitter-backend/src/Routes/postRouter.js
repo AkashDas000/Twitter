@@ -1,5 +1,6 @@
 const express = require("express")
 const { isLoggedIn } = require("../Middleware/isLoggedIn");
+const { isAuthor } = require("../Middleware/isAuthor");
 const { Post } = require("../Models/Post");
 
 const router = express.Router()
@@ -28,7 +29,17 @@ router.get("/posts", isLoggedIn, async( req, res) => {
         res.status(401).json({error: error.message})
     }
 })
+
+router.get("/posts/:id", isLoggedIn, isAuthor , async(req, res) => {
+    try {
+
+        const foundPost = await Post.findById(req.params.id)
+        res.status(200).json({msg: "done", data: foundPost})
+    } catch (error) {
+        res.status(401).json({error: error.message})
+    }
+})
  
-module.exports = {
+module.exports = { 
     postRouter: router,
-} 
+}  

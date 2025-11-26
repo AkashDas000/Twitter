@@ -3,7 +3,7 @@ const postSchema = new mongoose.Schema({
     author: {
         type: mongoose.Schema.Types.ObjectId,
         requied: true,
-        ref: "User"
+        ref: "user"
     },
     caption: {
         type: String,
