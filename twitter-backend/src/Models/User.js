@@ -54,7 +54,7 @@ const userSchema = new mongoose.Schema({
         },
         immutable: true
     },
-    post: [],
+    post: [{type: mongoose.Schema.Types.ObjectId, ref: "post"}],
     followers: [],
     following: [],
     bio: {
