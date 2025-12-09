@@ -4,7 +4,7 @@ const commentSchema = new mongoose.Schema({
   author: {
     type: mongoose.Schema.Types.ObjectId,
     requied: true,
-    ref: "User",
+    ref: "user",
   },
   text: {
     type: String,
@@ -12,7 +12,7 @@ const commentSchema = new mongoose.Schema({
     maxlength: 200,
     required: true,
   },
-  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+  likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
   replies: [],
 });
 

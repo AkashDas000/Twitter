@@ -7,6 +7,7 @@ const { userRouter } = require("./src/Routes/UserRouter");
 const { profileRouter } = require("./src/Routes/ProfileRouter");
 const cp = require("cookie-parser");
 const {postRouter} = require("./src/Routes/postRouter");
+const { commentRouter } = require("./src/Routes/CommentRouter");
 
 mongoose.connect(process.env.MONGODB_URL).then(() => {
     console.log("DB connected");
@@ -24,6 +25,7 @@ app.use("/api",otpRouter)
 app.use("/api",userRouter)
 app.use("/api",profileRouter)
 app.use("/api",postRouter)
+app.use("/api",commentRouter)
  
 
 
